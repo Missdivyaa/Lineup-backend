@@ -34,7 +34,7 @@ const io = socketIO(server, {
     credentials: true,
   },
 });
-const port = 8001;
+const port = process.env.PORT ||8001;
 app.use(cors());
 
 connectMongoDb(process.env.MONGO_URI);
