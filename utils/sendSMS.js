@@ -1,9 +1,5 @@
 require('dotenv').config();
 
-console.log('Account SID:', process.env.TWILIO_ACCOUNT_SID);
-console.log('Auth Token:', process.env.TWILIO_AUTH_TOKEN);
-console.log('Phone Number:', process.env.TWILIO_PHONE_NUMBER);
-
 const twilio = require('twilio');
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
@@ -21,7 +17,7 @@ module.exports = async (phone, otp) => {
    console.log('OTP sent successfully');
   } catch (error) {
     console.error('Error sending OTP:', error);
-
+    throw new Error('Failed to send sms: ' + error.message);
   
  }
 };

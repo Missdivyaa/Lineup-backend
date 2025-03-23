@@ -1,12 +1,13 @@
-console.log('RESEND_API_KEY:', process.env.RESEND_API);
 const { Resend } = require('resend');
-const resend = new Resend(process.env.RESEND_API); // Replace with your Resend API key
+const resend = new Resend(process.env.RESEND_API); 
 
 const sendEmail = async (email, otp) => {
+  console.log('email:', email);
+  console.log('OTP:', otp);
   try {
     const data = await resend.emails.send({
       
-      from: 'Lineup@resend.dev',
+      from: 'Lineup@lineuponline.live',
       to: email,
       subject: 'Your OTP Verification Code',
       html: `
